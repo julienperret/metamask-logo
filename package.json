@@ -1,14 +1,14 @@
 {
-  "name": "metamask-logo",
+  "name": "openmole-logo",
   "version": "2.1.4",
-  "description": "A browserifyable 3d metamask logo. [Live demo](http://metamask.github.io/metamask-logo/).",
+  "description": "A browserifyable 3d metamask logo. [Live demo](http://julienperret.github.io/openmole-logo/).",
   "main": "index.js",
   "scripts": {
     "build": "browserify example/example.js -g uglifyify -o bundle.js",
     "start": "wzrd example/example.js:bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "MetaMask",
+  "author": "MetaMask+JulienPerret(OpenMOLE version)",
   "license": "ISC",
   "dependencies": {
     "browserify": "^16.2.2",
@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MetaMask/metamask-logo.git"
+    "url": "git+https://github.com/julienperret/openmole-logo.git"
   },
   "bugs": {
-    "url": "https://github.com/MetaMask/metamask-logo/issues"
+    "url": "https://github.com/julienperret/openmole-logo/issues"
   },
-  "homepage": "https://github.com/MetaMask/metamask-logo#readme"
+  "homepage": "https://github.com/julienperret/openmole-logo#readme"
 }
