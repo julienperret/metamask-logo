@@ -1,6 +1,6 @@
-# Metamask Logo
+# OpenMOLE Logo
 
-A browserifyable 3d metamask logo. [Live demo](http://metamask.github.io/metamask-logo/).
+A browserifyable 3d OpenMOLE logo based on metamask logo. [Live demo](https://julienperret.github.io/openmole-logo/).
 
 This repo can both be included as a browserifiable module, and includes a sample app.
 
@@ -9,7 +9,7 @@ The sample app javascript is `bundle.js`, which is built from `sample.js` using 
 
 ## API
 ```javascript
-var ModelViewer = require('metamask-logo')
+var ModelViewer = require('openmole-logo')
 
 // To render with fixed dimensions:
 var viewer = ModelViewer({
