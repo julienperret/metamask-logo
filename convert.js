@@ -1,24 +1,45 @@
 var fs = require('fs')
 
 function parseMTL (mtl) {
+//  console.log('parsing mtl')
+
   var output = {}
   mtl.split('newmtl ').slice(1).forEach(function (block) {
-    var lines = block.split('\r\n')
+    var lines = block.split('\n')
+//    console.log('lines = ')
+//    console.log(lines)
     var label = lines[0]
+//    console.log('labels = ')
+//    console.log(label)
     var props = {}
+//    console.log('lines slice 1 = '+lines.slice(1))
     lines.slice(1).forEach(function (line) {
+/*
       if (line.charAt(0) !== '\t') {
         return
       }
-      var toks = line.split(/\s+/).slice(1)
-      var label = toks[0]
-      var data = toks.slice(1)
-      if (data.length === 1) {
-        props[label] = +data[0]
-      } else {
-        props[label] = data.map(function (x) {
-          return Math.sqrt(x).toPrecision(4)
-        })
+*/
+      if (line) {
+//	      console.log('line='+line)
+	      var toks = line.split(/\s+/).slice(1)
+//	      console.log('toks='+toks)
+	      var label = toks[0]
+//	      console.log('label='+label)
+	      var data = toks.slice(1)
+//	      console.log('data='+data)
+	      if (label === 'Ka') {
+	        label = 'Kd'
+	      }
+	      if (label === 'Kd') {
+	        label = 'Ka'
+	      }
+	      if (data.length === 1) {
+		props[label] = +data[0]
+	      } else {
+		props[label] = data.map(function (x) {
+		  return Math.sqrt(x).toPrecision(4)
+		})
+	      }
       }
     })
     output[label] = props
@@ -27,10 +48,10 @@ function parseMTL (mtl) {
   return output
 }
 
-var mtl = parseMTL(fs.readFileSync('fox.mtl').toString('utf8'))
+var mtl = parseMTL(fs.readFileSync('mole_scaled_googly_color.mtl').toString('utf8'))
 
 function parseOBJ (obj) {
-  var lines = obj.split('\r\n')
+  var lines = obj.split('\n')
 
   var positions = []
   var faceGroups = {}
@@ -82,6 +103,6 @@ function parseOBJ (obj) {
   }
 }
 
-var obj = parseOBJ(fs.readFileSync('fox.obj').toString('utf8'))
+var obj = parseOBJ(fs.readFileSync('mole_scaled_googly_color.obj').toString('utf8'))
 
 console.log(JSON.stringify(obj, null, 2))
